@@ -1,35 +1,12 @@
-use std::fs::File;
-use std::io::{self, Write};
+fn main(){
 
-fn main() -> io::Result<()> {
-    let file_name = "nigerian_breweries_drinks.txt";
+    let data = ["Ada", "Ola", "Joye", "Adam", "Yemi", "Sam", "Tola"];
+    pass_me(&data[4..1]);
 
-    // Data to save
-    let drinks = vec![
-        ("Lager", vec!["33 Export", "Desperados", "Goldberg", "Gulder", "Heineken", "Star"]),
-        ("Stout", vec!["Legend", "Turbo King", "Williams"]),
-        (
-            "Non-Alcoholic",
-            vec!["Maltina", "Amstel Malta", "Malta Gold", "Fayrouz"],
-        ),
-    ];
+}
 
-    // Create and open the file
-    let mut file = File::create(file_name)?;
+fn pass_me(use_data:&[&str]){
 
-    // Write data to the file
-    writeln!(file, "Nigerian Breweries - High-Quality Categories of Drinks")?;
-    writeln!(file, "-----------------------------------------------")?;
-
-    for (category, brands) in drinks {
-        writeln!(file, "{}:", category)?;
-        for brand in brands {
-            writeln!(file, "  - {}", brand)?;
-        }
-        writeln!(file)?; // Add a blank line between categories
-    }
-
-    println!("Data saved to {}", file_name);
-
-    Ok(())
+    println!("The length of use_data is: {:?}",use_data.len());
+    println!("{:?}",use_data);
 }
